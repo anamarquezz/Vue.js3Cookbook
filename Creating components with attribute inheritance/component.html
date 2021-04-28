@@ -5,47 +5,70 @@
     <body>
         <div id="app"></div>
         <script>
-        const {
-            defineComponent,
-            createApp,
-        } = Vue;
 
-        const nameInput = defineComponent({
-            name:'NameInput',
-            props:{
-                modelValue: String,
-            },
-            inheritAttrs: false,
-            template: `
-                <label>
-                    <input 
-                    v-bind="{
-                        ...$attrs,
-                    }"
-                    :value="modelValue"
-                    type="text"
-                    @change="(event) => $emit('update:modelValue',
-                                               event.target.value)"/>
-                </label>`
-        });
+            const {
+                createApp,
+                defineComponent,
+                setup,
+                ref,
+                onMounted,
+                onUnmounted
+            }
 
-        const component = defineComponent({
-            data: () => ({
-                name:''
-            }),
-            template:`
-                <name-input
-                  v-model="name"
-                  style="border:0; border-bottom:2px solid red;"
-                  data-test="name-input"
-                  />
-            `
-        });
+            function fetchLocation(){
+                let watcher;
 
-      const app = createApp(component);
-      app.component('NameInput', nameInput);
-      app.mount(`#app`);
+                const geoLocation = navigator.geolocation;
 
+                const gpsTime = ref(Date.now());
+
+                const coordinates = ref({
+                    accuracy: 0,
+                    latitude: 0,
+                    altitude: 0,
+                    altitudeAccuracy: 0,
+                    heading: 0,
+                    speed: 0,
+                });
+
+                function setPosition(payload){
+                    gpsTime.value = payload.timestamp;
+                    cordinates.value = payload.coords;
+                }
+
+                onMounted(()=> {
+                    if (geoLocation) watcher = geoLocation.watchPosition(setPosition);
+                });
+
+                onUnmounted(() => {
+                    if (watcher) geoLocation.clearWatch(watcher);
+                });
+
+                return {
+                    coordinates,
+                    gpsTime
+                }
+            }
+
+            const appComponent = defineComponent({
+                setup(){
+                    const {
+                        coordinates,
+                        gpsTime,
+                    } =fetchLocation();
+
+                    conts formatOptions = {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: 'numeric',
+                    }
+                },
+                template:``
+            })
+     
         </script>
     </body>
 </html>
