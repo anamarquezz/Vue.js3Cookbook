@@ -1,0 +1,16 @@
+{
+  "name": "03-creating-your-first-typescript-class",
+  "version": "1.0.0",
+  "description": "## Project setup ``` yarn install ```",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^3.9.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
