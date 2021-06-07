@@ -1,0 +1,5 @@
+npm install -g @vue/cli
+vue create my-first-project
+npm run serve —For running a development server locally
+npm run build —For building and minifying the application for deployment
+npm run lint —To execute the lint on the code
