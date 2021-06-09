@@ -6,3 +6,4 @@ npm run lint —To execute the lint on the code
 vue ui
 
 Add vue-router, and vuex on vue ui
+
