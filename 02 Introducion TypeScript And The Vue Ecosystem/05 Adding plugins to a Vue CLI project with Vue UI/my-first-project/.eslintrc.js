@@ -5,22 +5,20 @@ module.exports = {
     node: true,
   },
 
-  extends: [
-    'plugin:vue/vue3-essential',
-    '@vue/airbnb',
-  ],
+  rules: {
+    'class-methods-use-this': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+  },
 
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
 
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-  },
-
   extends: [
-    'plugin:vue/vue3-essential',
+    'plugin:vue/essential',
+    'plugin:vue/recommended',
+    'plugin:vue/strongly-recommended',
     '@vue/airbnb',
     '@vue/typescript',
   ],
