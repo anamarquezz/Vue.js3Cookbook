@@ -1,0 +1,13 @@
+npm install -g @vue/cli
+vue create my-first-project
+npm run serve —For running a development server locally
+npm run build —For building and minifying the application for deployment
+npm run lint —To execute the lint on the code
+vue ui
+
+Add vue-router, and vuex on vue ui
+
+Creating your first TypeScript Vue component with vue-class-component
+
+Creating a custom mixin with vue-class-component
+> CounterByTen.vue in 
