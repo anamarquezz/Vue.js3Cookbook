@@ -1,24 +1,28 @@
 <template>
   <div>
     <fieldset>
-      <legend>{{ formattedNumber }}</legend>
-      <button @click="increase">
-        Increase
-      </button><button @click="decrease">
-        Decrease
-      </button>
+      <legend>{{ this.formattedNumber }}</legend>
+      <button @click="increase">Increase</button>
+      <button@click="decrease">Decrease</button>
     </fieldset>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component, { mixins } from 'vue-class-component';
-import DefaultNumber from '../mixins/defaultNumber';
+import Component from 'vue-class-component';
+import componentMount from '../decorators/ComponentMount';
 
 @Component
-export default class Counter extends mixins(DefaultNumber) {
+@componentMount
+export default class Counter extends Vue {
   valueNumber: number = 0;
+
+  debug: boolean = true;
+
+  get formattedNumber() {
+    return `Your total number is: ${this.valueNumber}`;
+  }
 
   increase() {
     this.valueNumber += 1;
@@ -28,4 +32,5 @@ export default class Counter extends mixins(DefaultNumber) {
     this.valueNumber -= 1;
   }
 }
+
 </script>
