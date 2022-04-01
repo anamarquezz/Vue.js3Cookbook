@@ -1,9 +1,12 @@
 <template>
   <div>
     <fieldset>
-      <legend>{{ this.formattedNumber }}</legend>
-      <button @click="increase">Increase</button>
-      <button@click="decrease">Decrease</button>
+      <legend>{{ formattedNumber }}</legend>
+      <button @click="increase">
+        Increase
+      </button><button @click="decrease">
+        Decrease
+      </button>
     </fieldset>
   </div>
 </template>
@@ -13,24 +16,23 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import componentMount from '../decorators/ComponentMount';
 
-@Component
-@componentMount
+  @Component
+  @componentMount
 export default class Counter extends Vue {
-  valueNumber: number = 0;
+    valueNumber: number = 0;
 
-  debug: boolean = true;
+    debug: boolean = true;
 
-  get formattedNumber() {
-    return `Your total number is: ${this.valueNumber}`;
-  }
+    get formattedNumber() {
+      return `Your total number is: ${this.valueNumber}`;
+    }
 
-  increase() {
-    this.valueNumber += 1;
-  }
+    increase() {
+      this.valueNumber += 1;
+    }
 
-  decrease() {
-    this.valueNumber -= 1;
-  }
+    decrease() {
+      this.valueNumber -= 1;
+    }
 }
-
 </script>

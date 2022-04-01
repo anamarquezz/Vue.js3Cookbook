@@ -7,12 +7,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Counter from './components/Counter.vue';
-import CounterByTen from './components/CounterByTen.vue';
+
 
 @Component({
   components: {
     Counter,
-    CounterByTen,
   },
 })
 export default class App extends Vue {
